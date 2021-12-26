@@ -1,4 +1,7 @@
 #!/bin/bash 
+mypidfile=/var/run/script_2.sh.pid
+trap "rm -f -- '$mypidfile'" EXIT
+echo $$ > "$mypidfile"
 source test.sh
 while true [[ $now_files -gt $max_files ]] | [[ $now_size -gt $max_size ]] 
 do
